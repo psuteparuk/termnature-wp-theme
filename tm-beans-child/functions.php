@@ -11,7 +11,13 @@ add_action( 'beans_uikit_enqueue_scripts', 'beans_child_enqueue_uikit_assets' );
 
 function beans_child_enqueue_uikit_assets() {
 
-	beans_compiler_add_fragment( 'uikit', get_stylesheet_directory_uri() . '/style.less', 'less' );
+  $uri = get_stylesheet_directory_uri();
+
+	beans_compiler_add_fragment( 'uikit', array(
+    "${uri}/style.less",
+    "${uri}/less/variables.less",
+    "${uri}/less/themes/_import.less"
+  ), 'less' );
 
 }
 
@@ -23,5 +29,3 @@ function beans_child_enqueue_uikit_assets() {
 	// wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/style.css' );
 
 // }
-
-
